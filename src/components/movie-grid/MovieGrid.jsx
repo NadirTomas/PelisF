@@ -8,14 +8,14 @@ import Button, { OutlineButton } from '../button/Button';
 import Input from '../input/Input';
 
 import tmdbApi, { category, movieType, tvType } from '../../api/tmdbApi';
-import { useNavigate } from 'react-router-dom'; // Cambio aquí
+import { useNavigate } from 'react-router-dom';
 
 const MovieGrid = (props) => {
     const [items, setItems] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
     const { keyword } = useParams();
-    const navigate = useNavigate(); // Cambio aquí
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getList = async () => {
@@ -90,12 +90,12 @@ const MovieGrid = (props) => {
 const MovieSearch = (props) => {
     const [keyword, setKeyword] = useState(props.keyword ? props.keyword : '');
 
-    const goToSearch = useCallback((props) => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const goToSearch = useCallback(() => {
         if (keyword.trim().length > 0) {
             props.navigate(`/${category[props.category]}/search/${keyword}`);
         }
-    }, [keyword]);
-    
+    });
 
     useEffect(() => {
         const enterEvent = (e) => {
@@ -108,7 +108,7 @@ const MovieSearch = (props) => {
         return () => {
             document.removeEventListener('keyup', enterEvent);
         };
-    }, [keyword, goToSearch]);
+    }, [goToSearch, keyword]);
 
     return (
         <div className="movie-search">
