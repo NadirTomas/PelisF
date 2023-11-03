@@ -5,11 +5,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 import tmdbApi, { movieType } from '../../api/tmdbApi';
-import { useNavigate } from 'react-router-dom'; // Importación de react-router-dom
+import { useNavigate } from 'react-router-dom';
 
 import './hero-slide.scss';
 
-import HeroSlideItem from './HeroSlide'; // Importa HeroSlideItem desde su ubicación
+import HeroSlideItem from './HeroSlide';
 
 const HeroSlide = () => {
     SwiperCore.use([Autoplay]);
@@ -42,7 +42,6 @@ const HeroSlide = () => {
                 grabCursor={true}
                 spaceBetween={0}
                 slidesPerView={1}
-                // autoplay={{ delay: 3000 }}
             >
                 {movieItems.map((item, i) => (
                     <SwiperSlide key={i}>
@@ -52,7 +51,7 @@ const HeroSlide = () => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            {/* Esta sección que renderiza TrailerModal la puedes eliminar */}
+            {}
         </div>
     );
 };
